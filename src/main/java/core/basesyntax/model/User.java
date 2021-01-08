@@ -1,9 +1,9 @@
 package core.basesyntax.model;
 
 public class User {
-    String firstName;
-    String lastName;
-    String number;
+    private String firstName;
+    private String lastName;
+    private String number;
 
     public User(String firstName, String lastName, String number) {
         this.firstName = firstName;
