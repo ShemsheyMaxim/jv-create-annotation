@@ -3,12 +3,12 @@ package core.basesyntax.model;
 public class User {
     private String firstName;
     private String lastName;
-    private String number;
+    private int phoneNumber;
 
-    public User(String firstName, String lastName, String number) {
+    public User(String firstName, String lastName, int phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.number = number;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {
@@ -27,20 +27,20 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getNumber() {
-        return number;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
         return "User{"
-                + "firstName='" + firstName + '\''
-                + ", lastName='" + lastName + '\''
-                + ", number='" + number + '\''
+                + "firstName = '" + firstName + '\''
+                + ", lastName = '" + lastName + '\''
+                + ", number = '" + phoneNumber + '\''
                 + '}';
     }
 }
