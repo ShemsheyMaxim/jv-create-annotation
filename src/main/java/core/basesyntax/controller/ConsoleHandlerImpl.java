@@ -13,6 +13,7 @@ public class ConsoleHandlerImpl {
         while (true) {
             String command = scanner.nextLine();
             if (command.equalsIgnoreCase("стоп")) {
+                System.out.println(betDao.getAll());
                 return;
             }
             Bet bet;
