@@ -23,12 +23,14 @@ public class ConsoleHandlerImpl {
                 bet = new Bet(value, risk);
 
             } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
-                System.out.println("Пожалуйста, введите валидные данные: сумму(число) и коеффициент(число) через пробел для для вашей ставки");
+                System.out.println("Пожалуйста, введите валидные данные: "
+                        + "сумму(число) и коеффициент(число) через пробел для для вашей ставки");
                 continue;
             }
             betDao.add(bet);
             System.out.println(bet);
-            System.out.println("Введите ещё одну ставку или введите \"стоп\" чтобы завершить работу");
+            System.out.println("Введите ещё одну ставку или введите \"стоп\" "
+                    + "чтобы завершить работу");
         }
     }
 }
