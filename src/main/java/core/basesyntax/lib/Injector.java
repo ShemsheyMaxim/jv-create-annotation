@@ -17,27 +17,26 @@ public class Injector {
         for (Field field : declaredFields) {
             if (field.getAnnotation(Inject.class) != null) {
                 field.setAccessible(true);
+                Object object;
                 if (field.getType().equals(BetDao.class)) {
-                    BetDao betDao = Factory.getBetDao();
-                    if (betDao.getClass().getAnnotation(Dao.class) != null) {
-                        field.set(instance, Factory.getBetDao());
-                    } else {
-                        throw new AnnotationException("This class don't independents of "
-                                + "Dao annotation"
-                                + field.getClass());
-                    }
+                    object = Factory.getBetDao();
+                    checkObjectOnAnnotationDao(field, object);
+                    field.set(instance, object);
                 } else if (field.getType().equals(UserDao.class)) {
-                    UserDao userDao = Factory.getUserDao();
-                    if (userDao.getClass().getAnnotation(Dao.class) != null) {
-                        field.set(instance, Factory.getUserDao());
-                    } else {
-                        throw new AnnotationException("This class don't independents of "
-                                + "Dao annotation"
-                                + field.getClass());
-                    }
+                    object = Factory.getUserDao();
+                    checkObjectOnAnnotationDao(field, object);
+                    field.set(instance, object);
                 }
             }
         }
         return instance;
+    }
+
+    private static void checkObjectOnAnnotationDao(Field field, Object object) {
+        if (object.getClass().getAnnotation(Dao.class) == null) {
+            throw new AnnotationException("This class don't independents of "
+                    + "Dao annotation"
+                    + field.getClass());
+        }
     }
 }
